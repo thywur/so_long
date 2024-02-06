@@ -6,7 +6,7 @@
 /*   By: alermolo <alermolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:11:17 by alermolo          #+#    #+#             */
-/*   Updated: 2024/02/06 14:12:24 by alermolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:49:50 by alermolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ void	init_collectibles(t_data *data);
 void	init_player(t_data *data);
 void	init_exit(t_data *data);
 void	init_enemy(t_data *data);
-void	init_sprite_paths(t_data *data);
 void	clear_player_space(t_data *data);
 void	win_msg(t_data *data);
 void	lose_msg(t_data *data);
