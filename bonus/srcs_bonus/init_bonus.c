@@ -6,7 +6,7 @@
 /*   By: alermolo <alermolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:31:04 by alermolo          #+#    #+#             */
-/*   Updated: 2024/01/31 16:51:35 by alermolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:13:55 by alermolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,5 @@ void	init_enemy(t_data *data)
 	data->img.enemy_l1.addr = NULL;
 	data->img.enemy_l2.addr = NULL;
 }
+
+

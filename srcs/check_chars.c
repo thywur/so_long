@@ -6,7 +6,7 @@
 /*   By: alermolo <alermolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:06:59 by alermolo          #+#    #+#             */
-/*   Updated: 2024/01/31 16:50:46 by alermolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:39:38 by alermolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static int	count_e(t_data *data)
 		}
 		i++;
 	}
+	if (e_count != 1)
+		err_msg(data, "Map must have exactly one exit");
 	return (e_count);
 }
 
@@ -52,6 +54,8 @@ static int	count_c(t_data *data)
 		}
 		i++;
 	}
+	if (data->c_count < 1)
+		err_msg(data, "Map must have at least one collectible");
 	return (data->c_count);
 }
 
@@ -74,6 +78,8 @@ static int	count_p(t_data *data)
 		}
 		i++;
 	}
+	if (p_count != 1)
+		err_msg(data, "Map must have exactly one player");
 	return (p_count);
 }
 
@@ -89,7 +95,8 @@ int	chars_valid(t_data *data)
 		while (data->map[i][j])
 		{
 			if (!ft_strchr("01CEP", data->map[i][j]))
-				return (0);
+				err_msg(data, "Invalid character in map");
+				// return (0);
 			if (data->map[i][j] == 'P')
 			{
 				data->player.x = j * SIZE;

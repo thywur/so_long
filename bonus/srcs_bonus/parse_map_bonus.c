@@ -6,7 +6,7 @@
 /*   By: alermolo <alermolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:15:11 by alermolo          #+#    #+#             */
-/*   Updated: 2024/01/30 15:27:19 by alermolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:18:22 by alermolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,6 @@ void	parse_map(t_data *data, char *map_path)
 	free(temp);
 	free(line);
 	close(map_fd);
+	if (!data->map || !data->map_check)
+		err_msg(data, "ft_split() failed");
 }

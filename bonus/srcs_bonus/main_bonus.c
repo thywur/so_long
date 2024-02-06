@@ -6,7 +6,7 @@
 /*   By: alermolo <alermolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:22:31 by alermolo          #+#    #+#             */
-/*   Updated: 2024/02/02 13:27:53 by alermolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:16:20 by alermolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,15 @@ static t_spr_data	new_sprite(t_data *data, char *path)
 {
 	t_spr_data	spr;
 
+	if (!path)
+		err_msg(data, "Invalid sprite path");
 	spr.addr = mlx_xpm_file_to_image(data->mlx, path, &spr.width, &spr.height);
 	if (spr.addr == NULL)
-		free_and_exit(data, EXIT_FAILURE);
+		err_msg(data, "Invalid sprite path");
+		// free_and_exit(data, EXIT_FAILURE);
 	return (spr);
 }
-
-static void	init_data(t_data *data)
-{
-	data->map = NULL;
-	data->map_check = NULL;
-	data->win = NULL;
-	data->img.empty.addr = NULL;
-	data->img.wall.addr = NULL;
-	init_collectibles(data);
-	init_player(data);
-	init_exit(data);
-	init_enemy(data);
-}
-
-static void	get_sprite_paths(t_data *data)
+static void	init_sprite_paths(t_data *data)
 {
 	data->img.empty = new_sprite(data, EMPTY_PATH);
 	data->img.wall = new_sprite(data, WALL_PATH);
@@ -63,6 +52,20 @@ static void	get_sprite_paths(t_data *data)
 	data->img.enemy_l2 = new_sprite(data, ENEMY_L2_PATH);
 }
 
+static void	init_data(t_data *data)
+{
+	data->map = NULL;
+	data->map_check = NULL;
+	data->win = NULL;
+	data->img.empty.addr = NULL;
+	data->img.wall.addr = NULL;
+	init_collectibles(data);
+	init_player(data);
+	init_exit(data);
+	init_enemy(data);
+	init_sprite_paths(data);
+}
+
 void	fill_data(t_data *data)
 {
 	int		i;
@@ -74,6 +77,8 @@ void	fill_data(t_data *data)
 	data->map_h = i * SIZE;
 	data->win = mlx_new_window(data->mlx, data->map_w,
 			data->map_h, "so_long");
+	if (!data->win)
+		err_msg(data, "mlx_new_window() failed");
 	data->exit_open = 0;
 	data->mov_count = 0;
 	data->has_empty = 0;
@@ -84,8 +89,10 @@ int	main(int argc, char **argv)
 	t_data		data;
 
 	data.mlx = mlx_init();
+	if (!data.mlx)
+		err_msg(&data, "mlx_init() failed");
 	init_data(&data);
-	get_sprite_paths(&data);
+	// init_sprite_paths(&data);
 	if (argc != 2)
 		err_msg(&data, "Please specify a single valid .ber file");
 	parse_map(&data, argv[1]);

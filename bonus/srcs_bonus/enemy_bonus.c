@@ -6,7 +6,7 @@
 /*   By: alermolo <alermolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:41:24 by alermolo          #+#    #+#             */
-/*   Updated: 2024/02/02 13:36:28 by alermolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:22:08 by alermolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,6 @@ void	move_enemy(t_data *data)
 		if (y == data->player.y / SIZE && x == data->player.x / SIZE)
 			lose_msg(data);
 		if (data->map[y][x] == '0')
-		{
 			print_enemy(data, x, y);
-		}
 	}
 }
