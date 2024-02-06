@@ -6,7 +6,7 @@
 /*   By: alermolo <alermolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:22:31 by alermolo          #+#    #+#             */
-/*   Updated: 2024/02/06 13:55:39 by alermolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:46:25 by alermolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ t_spr_data	new_sprite(t_data *data, char *path)
 
 	if (!path)
 		err_msg(data, "Invalid sprite path");
-		// free_and_exit(data, EXIT_FAILURE);
 	spr.addr = mlx_xpm_file_to_image(data->mlx, path, &spr.width, &spr.height);
 	if (spr.addr == NULL)
 		err_msg(data, "Invalid sprite path");
-		// free_and_exit(data, EXIT_FAILURE);
 	return (spr);
 }
 

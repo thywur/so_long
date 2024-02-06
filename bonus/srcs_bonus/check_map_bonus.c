@@ -6,7 +6,7 @@
 /*   By: alermolo <alermolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:37:21 by alermolo          #+#    #+#             */
-/*   Updated: 2024/02/06 14:20:46 by alermolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:47:39 by alermolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,15 +100,11 @@ int	map_valid(t_data *data)
 {
 	if (!map_rectangular(data))
 		err_msg(data, "Map is not rectangular");
-		// return (0);
 	if (!walls_ok(data))
 		err_msg(data, "Map is not surrounded by walls");
-		// return (0);
 	if (!chars_valid(data))
 		err_msg(data, "Invalid characters in map");
-		// return (0);
 	if (!is_solvable(data))
 		err_msg(data, "Map is not solvable");
-		// return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: alermolo <alermolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:06:59 by alermolo          #+#    #+#             */
-/*   Updated: 2024/02/06 14:39:03 by alermolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:47:18 by alermolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ int	chars_valid(t_data *data)
 		{
 			if (!ft_strchr("01CEP", data->map[i][j]))
 				err_msg(data, "Invalid character in map");
-				// return (0);
 			if (data->map[i][j] == 'P')
 				set_coords(&data->player, i, j);
 			if (data->map[i][j] == 'E')
